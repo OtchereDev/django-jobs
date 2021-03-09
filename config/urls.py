@@ -17,6 +17,8 @@ urlpatterns = [
     path("users/", include("django_jobs.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
+    path('jobs/',include('jobs.urls',namespace='jobs')),
+    path('newsletter/',include('newsletter.urls',namespace='newsletter')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # API URLS
