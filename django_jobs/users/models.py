@@ -52,7 +52,7 @@ class CustomAccountManager(BaseUserManager):
 
 class User(AbstractBaseUser,PermissionsMixin):
     email=models.EmailField(max_length=500,unique=True)
-    username=models.CharField(max_length=300,blank=True,null=True)
+    # username=None
     name = models.CharField(max_length=500)
     professional_title=models.CharField(max_length=300,blank=True,null=True)
     about=models.TextField(blank=True)
