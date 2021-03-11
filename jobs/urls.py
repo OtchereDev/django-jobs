@@ -5,5 +5,5 @@ app_name='jobs'
 
 urlpatterns = [
     path('all',jobListView,name='all_jobs'),
-    path('<int:id>/',JobDetailView.as_view(),name='job_detail')
+    path('<int:id>-<slug:slug>/',JobDetailView.as_view(),name='job_detail')
 ]
