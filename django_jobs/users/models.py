@@ -63,7 +63,7 @@ class User(AbstractBaseUser,PermissionsMixin):
     skills=models.ManyToManyField('Skill',blank=True)
     languages=models.ManyToManyField('Language',blank=True)
     experiences=models.ManyToManyField('Experience',blank=True)
-    eductions=models.ManyToManyField('Education',blank=True)
+    educations=models.ManyToManyField('Education',blank=True)
     resume=models.FileField(null=True,blank=True)
     privacy=models.BooleanField(default=True)
     is_staff=models.BooleanField(default=False)
@@ -75,8 +75,8 @@ class User(AbstractBaseUser,PermissionsMixin):
     USERNAME_FIELD='email'
     REQUIRED_FIELDS=['name']
 
-    def __str__(self) -> str:
-        return self.name
+    # def __str__(self) -> str:
+    #     return self.email
 
 
 class Skill(models.Model):
@@ -95,7 +95,7 @@ class Experience(models.Model):
     role=models.CharField(max_length=300)
     description=models.TextField()
     start_date=models.DateField()
-    end_date=models.DateField(blank=True)
+    end_date=models.DateField(blank=True,null=True)
     until_now=models.BooleanField(default=False)
 
 
@@ -105,11 +105,15 @@ class Language(models.Model):
     def __str__(self) -> str:
         return self.name
 
+    def save(self,*args, **kwargs):
+        self.name=f"{self.name}".title()
+        return super().save(*args, **kwargs)
+
 
 
 class Education(models.Model):
     school=models.CharField(max_length=300)
     course=models.CharField(max_length=300)
     start_date=models.DateField()
-    end_date=models.DateField(blank=True)
+    end_date=models.DateField(blank=True,null=True)
     until_now=models.BooleanField(default=False)
