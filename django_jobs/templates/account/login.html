@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load i18n %}
 <html>
   <head>
     <meta charset="utf-8" />
@@ -19,7 +20,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
     />
-    <title>Login | Tailwind Starter Kit by Creative Tim</title>
+    <title>{% trans "Sign In" %}</title>
   </head>
   <body class="text-gray-800 antialiased">
     <nav
@@ -207,12 +208,12 @@
                     </div>
                     <div class="flex flex-wrap mt-6">
                     <div class="w-1/2">
-                      <a href="#pablo" class="text-black font-semibold"
+                      <a href="{% url 'account_reset_password' %}" class="text-black font-semibold"
                         ><small>Forgot password?</small></a
                       >
                     </div>
                     <div class="w-1/2 text-right">
-                      <a href="#pablo" class="text-black font-semibold"
+                      <a href="{% url 'account_signup' %}" class="text-black font-semibold"
                         ><small>Create new account</small></a
                       >
                     </div>
